@@ -20,7 +20,38 @@ class Server {
   //se establecen las rutas
   routes() {
     this.app.get('/api', (req, res) => {
-      res.send('Hello World')
+      res.json({
+        ok: true,
+        resp: "estos son los registros"
+      })
+    })
+    
+    this.app.put('/api', (req, res) => {
+      res.json({
+        ok: true,
+        resp: "registro actualizado"
+      })
+    })
+    
+    this.app.post('/api', (req, res) => {
+      res.json({
+        ok: true,
+        resp: "registro añadido"
+      })
+    })
+    
+    this.app.delete('/api', (req, res) => {
+      res.json({
+        ok: true,
+        resp: "registro eliminado"
+      })
+    })
+
+    this.app.patch('/api', (req, res) => {
+      res.json({
+        ok: true,
+        resp: "patch api"
+      })
     })
   }
   //Listeners
