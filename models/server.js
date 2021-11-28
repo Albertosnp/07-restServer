@@ -9,7 +9,7 @@ class Server {
   }
   //se establecen las rutas
   routes() {
-    app.get('/', (req, res) => {
+    this.app.get('/', (req, res) => {
       res.send('Hello World')
     })
   }
