@@ -5,7 +5,6 @@ class Server {
     this.app = express()
     this.port = process.env.PORT
 
-    
     this.routes()
   }
   //se establecen las rutas
