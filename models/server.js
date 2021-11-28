@@ -5,11 +5,21 @@ class Server {
     this.app = express()
     this.port = process.env.PORT
 
+    //Middlewares
+    this.midddlewares()
+
+    //Rutas de la app
     this.routes()
   }
+
+  midddlewares() {
+    //Directorio publico
+    this.app.use(express.static('public'))
+  }
+
   //se establecen las rutas
   routes() {
-    this.app.get('/', (req, res) => {
+    this.app.get('/api', (req, res) => {
       res.send('Hello World')
     })
   }
