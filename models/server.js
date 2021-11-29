@@ -4,7 +4,7 @@ class Server {
   constructor() {
     this.app = express()
     this.port = process.env.PORT
-
+    this.usersPath = '/api/usuarios'
     //Middlewares
     this.midddlewares()
 
@@ -23,40 +23,8 @@ class Server {
 
   //se establecen las rutas
   routes() {
-    this.app.get('/api', (req, res) => {
-      res.json({
-        ok: true,
-        resp: "estos son los registros"
-      })
-    })
-    
-    this.app.put('/api', (req, res) => {
-      res.json({
-        ok: true,
-        resp: "registro actualizado"
-      })
-    })
-    
-    this.app.post('/api', (req, res) => {
-      res.status(201).json({
-        ok: true,
-        resp: "registro añadido"
-      })
-    })
-    
-    this.app.delete('/api', (req, res) => {
-      res.json({
-        ok: true,
-        resp: "registro eliminado"
-      })
-    })
-
-    this.app.patch('/api', (req, res) => {
-      res.json({
-        ok: true,
-        resp: "patch api"
-      })
-    })
+    //Para cargar el archivo de rutas -> el path '/api/usuarios' desde el cual funcionaran todas las rutas del require
+    this.app.use(this.usersPath, require('../routes/usuarios'))
   }
   //Listeners
   listeners() {
