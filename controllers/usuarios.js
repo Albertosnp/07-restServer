@@ -15,9 +15,16 @@ const putUsers = (req, res = response) => {
 }
 
 const postUsers = (req, res = response) => {
+  //Se extrae el mensaje-body
+  const body = req.body
+  
+  console.log({ body });
+
+  //Se manda info al front de que ha ido bien
   res.status(201).json({
     ok: true,
-    resp: "registro añadido"
+    resp: "registro añadido",
+    body
   })
 }
 

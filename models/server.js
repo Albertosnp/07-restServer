@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+
 class Server {
   constructor() {
     this.app = express()
@@ -16,6 +17,9 @@ class Server {
 
     //CORS
     this.app.use(cors())
+
+    //Lectura y parseo del body (Todo lo que venga sera parseado a json)
+    this.app.use(express.json())
 
     //Directorio publico
     this.app.use(express.static('public'))
