@@ -1,16 +1,28 @@
-const { response } = require('express')
+const { response, request, query } = require('express')
 
-const getUsers = (req, res = response) => {
+const getUsers = (req = request, res = response) => {
+
+  //Se pueden desestructurar los parametros { }
+  const { nombre = '', apiKey, page, limit } = req.query
+  
   res.json({
     ok: true,
-    resp: "estos son los registros"
+    resp: "estos son los registros",
+    apiKey,
+    page,
+    limit
   })
 }
 
 const putUsers = (req, res = response) => {
+  
+  //Se recogen los params (Viene en string)
+  const { id } = req.params
+  
   res.json({
     ok: true,
-    resp: "registro actualizado"
+    resp: "registro actualizado",
+    id: id
   })
 }
 
